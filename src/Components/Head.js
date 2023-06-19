@@ -2,12 +2,21 @@ import React from 'react';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import { useDispatch } from 'react-redux';
+import { toggleMenu } from '../Utils/appSlice';
 
 const Head = () => {
+  const dispatch = useDispatch();
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-lg">
       <div className="flex col-span-1">
-        <MenuRoundedIcon className="h-8" />
+        <MenuRoundedIcon
+          className="h-8 cursor-pointer"
+          onClick={() => toggleMenuHandler()}
+        />
         <img
           className="h-8 mx-2"
           alt="yt-logo"
