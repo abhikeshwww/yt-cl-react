@@ -1,12 +1,13 @@
-import React from "react";
-import "./style.css";
-import Header from "./Components/Header"
+import React from 'react';
+import './style.css';
+import Head from './Components/Head';
+import Body from './Components/Body';
 
 export default function App() {
   return (
     <div>
-      <Header/>
-
+      <Head />
+      <Body />
     </div>
   );
 }
