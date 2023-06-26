@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { closeMenu } from '../util/appSlice';
+import { closeMenu } from '../Utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import VideoCntSidebar from './VideoCntSidebar';
 import CommentsContainer from './CommentsContainer';

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import { YOUTUBE_API_SUGGESTIONS_API, YOUTUBE_LOGO } from "../util/Constants";
-import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../util/appSlice";
-import { cacheResults } from "../util/searchSlice";
+import React, { useEffect, useState } from 'react';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { YOUTUBE_API_SUGGESTIONS_API, YOUTUBE_LOGO } from '../Utils/Constants';
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleMenu } from '../Utils/appSlice';
+import { cacheResults } from '../Utils/searchSlice';
 function Head() {
-  const [searctQuery, setSearchQuery] = useState("");
+  const [searctQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const serachCache = useSelector((store) => store.search);
@@ -19,12 +19,13 @@ function Head() {
    */
   useEffect(() => {
     const timer = setTimeout(() => {
-   /**    if (serachCache[searctQuery]) {
+      /**    if (serachCache[searctQuery]) {
         setShowSuggestions(serachCache[searctQuery]);
       } else getSuggestions();
 */
-      (serachCache[searctQuery])?setShowSuggestions(serachCache[searctQuery]) : getSuggestions();
-
+      serachCache[searctQuery]
+        ? setShowSuggestions(serachCache[searctQuery])
+        : getSuggestions();
     }, 200);
     return () => {
       clearTimeout(timer);
@@ -60,12 +61,11 @@ function Head() {
     const json = await data.json();
     setSuggestions(json[1]);
     //update in cache
-    dispatch(cacheResults({
-      [searctQuery]: json[1]
-    })
-      
-
-    )
+    dispatch(
+      cacheResults({
+        [searctQuery]: json[1],
+      })
+    );
   };
 
   return (
